@@ -1,0 +1,13 @@
+!!!5
+%html
+  %head
+    %title My Blog
+  %body
+    %h3
+      Which post you wanna see?
+      %p
+        - unless @posts.empty?
+          - @posts.each do |post|
+            %a{:href => "#{post}"} #{post.split('.html')[0]}
+            %br
+
