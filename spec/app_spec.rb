@@ -1,11 +1,14 @@
 require 'spec_helper'
-# require './app.rb'
+require './app.rb'
+require './services'
 
-describe "App" do
-  context "/" do
-    yamlfile = mock('file')
-    directory = mock('dir').as_null_object
-    Dir.should_receive(:foreach).with("yamlfile").and_yield(post)
-    [].should_receive(:push).with(post)
+describe "GET '/'" do
+    before do
+      get "/"
+    end
+
+  it "returns status 200" do
+    last_response.should be_ok
   end
 end
+
