@@ -1,2 +1,2 @@
-output: public/
-input: _public/
+output: posts/
+input: _posts/
