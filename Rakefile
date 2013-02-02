@@ -7,16 +7,20 @@ def get_config(file)
 end
 
 config = get_config('config/application.yml')
+input = config['input']
+output = config['output']
 
 desc 'Generates the html files from markdown'
 task :generate do
+  Dir.mkdir(output) unless File.exists?(output)
+
   files = []
-  Dir.foreach(config['input']) do |filename|
+  Dir.foreach(input) do |filename|
     files.push(filename).reject!{|f| f.each_char.first == '.'}
   end
   files.each do |file|
-   markup = Maruku.new(File.open("./#{config['input']}#{file}").read)
-   html = File.open("./#{config['output']}#{file.split('.')[0]}.html",'w')
+   markup = Maruku.new(File.open("./#{input}#{file}").read)
+   html = File.open("./#{output}#{file.split('.')[0]}.html",'w')
    html.write(markup.to_html_document)
   end
 end
