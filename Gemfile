@@ -9,7 +9,11 @@ gem 'haml'
 
 group :development do
   gem 'awesome_print'
-  gem 'test_notifier', :require => "test_notifier/runner/rspec"
   gem 'pry'
   gem 'pry-debugger'
+end
+
+group :test do
+  gem 'test_notifier', :require => "test_notifier/runner/rspec"
+  gem 'rspec'
 end
