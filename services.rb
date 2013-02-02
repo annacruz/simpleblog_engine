@@ -1,5 +1,5 @@
 class Services
-  def self.get_posts directory
+  def self.get_posts(directory)
     posts = []
     directory.entries.each do |post|
       posts.push(post).reject!{|f| f.each_char.first == '.'}
